@@ -178,5 +178,54 @@ Page({
   onToday() {
     console.log('点击回到今天')
     this.initCalendar()
+  },
+
+  // 清空所有数据
+  onClearAllData() {
+    wx.showModal({
+      title: '确认清空',
+      content: '确定要清空所有历史数据吗？此操作不可恢复！',
+      confirmText: '确定清空',
+      confirmColor: '#ff4757',
+      success: (res) => {
+        if (res.confirm) {
+          this.clearAllData()
+        }
+      }
+    })
+  },
+
+  // 执行清空所有数据
+  clearAllData() {
+    try {
+      // 清空存储
+      wx.removeStorageSync(app.globalData.storageKey)
+      
+      // 重置页面数据
+      this.setData({
+        eventRecords: {},
+        stats: {
+          successCount: 0,
+          totalCount: 0,
+          totalAllTimeCount: 0
+        }
+      })
+      
+      // 重新生成日历
+      this.generateCalendar(this.data.currentYear, this.data.currentMonth)
+      
+      wx.showToast({
+        title: '数据已清空',
+        icon: 'success',
+        duration: 2000
+      })
+
+    } catch (error) {
+      console.error('清空数据失败:', error)
+      wx.showToast({
+        title: '清空失败',
+        icon: 'error'
+      })
+    }
   }
 })
