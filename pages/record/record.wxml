@@ -1,0 +1,41 @@
+<view class="container">
+  <!-- 日期显示 -->
+  <view class="date-display card">
+    <view class="date-text">{{displayDate}}</view>
+    <view class="record-count">
+      已记录 {{recordCount}} 次
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view wx:if="{{recordCount > 0}}" class="records-list card">
+    <view class="records-title">今日记录</view>
+    <view class="records-container">
+      <view 
+        wx:for="{{recordTimes}}" 
+        wx:key="timestamp" 
+        class="record-item"
+        data-index="{{index}}"
+        bindtap="onDeleteRecord"
+      >
+        <view class="record-time">{{item.time}}</view>
+        <view class="record-delete">删除</view>
+      </view>
+    </view>
+    <view class="clear-all-btn">
+      <button class="btn btn-delete" bindtap="onClearAllRecords">清空所有记录</button>
+    </view>
+  </view>
+
+  <!-- 记录操作 -->
+  <view class="record-actions card">
+    <view class="record-title">记录事件</view>
+    <view class="action-buttons">
+      <button class="btn btn-success btn-large" bindtap="onRecordSuccess">
+        <view class="btn-icon">+</view>
+        <view class="btn-text">添加记录</view>
+      </button>
+    </view>
+  </view>
+
+</view>

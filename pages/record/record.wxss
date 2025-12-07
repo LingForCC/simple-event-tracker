@@ -1,0 +1,133 @@
+/* 日期显示 */
+.date-display {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.date-text {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.record-count {
+  font-size: 28rpx;
+  color: #666;
+}
+
+/* 记录列表 */
+.records-list {
+  margin-bottom: 30rpx;
+}
+
+.records-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  text-align: center;
+  color: #333;
+}
+
+.records-container {
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  margin-bottom: 10rpx;
+  background-color: #f8f9fa;
+  border-radius: 8rpx;
+  border-left: 4rpx solid #28a745;
+}
+
+.record-time {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.record-delete {
+  font-size: 24rpx;
+  color: #dc3545;
+  padding: 8rpx 16rpx;
+  border-radius: 4rpx;
+  background-color: #f8d7da;
+}
+
+.clear-all-btn {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+/* 记录操作 */
+.record-actions {
+  margin-bottom: 30rpx;
+}
+
+.record-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  text-align: center;
+  color: #333;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.btn-large {
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+}
+
+.btn-icon {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.btn-text {
+  font-size: 28rpx;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  margin-top: 20rpx;
+}
+
+/* 响应式调整 */
+@media (max-width: 750rpx) {
+  .date-text {
+    font-size: 36rpx;
+  }
+  
+  .record-time {
+    font-size: 28rpx;
+  }
+  
+  .btn-large {
+    height: 100rpx;
+  }
+  
+  .btn-icon {
+    font-size: 40rpx;
+  }
+  
+  .btn-text {
+    font-size: 26rpx;
+  }
+}

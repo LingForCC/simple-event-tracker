@@ -1,0 +1,68 @@
+<view class="container">
+  <!-- 月份导航 -->
+  <view class="month-nav card">
+    <view class="nav-row">
+      <button class="nav-btn" bindtap="onPrevMonth">‹</button>
+      <view class="month-text">{{currentYear}}年{{currentMonth}}月</view>
+      <button class="nav-btn" bindtap="onNextMonth">›</button>
+    </view>
+    <view class="today-btn">
+      <button class="btn btn-primary" bindtap="onToday">回到今天</button>
+    </view>
+  </view>
+
+  <!-- 日历 -->
+  <view class="calendar card">
+    <!-- 星期标题 -->
+    <view class="weekdays">
+      <view class="weekday">日</view>
+      <view class="weekday">一</view>
+      <view class="weekday">二</view>
+      <view class="weekday">三</view>
+      <view class="weekday">四</view>
+      <view class="weekday">五</view>
+      <view class="weekday">六</view>
+    </view>
+    
+    <!-- 日期网格 -->
+    <view class="days-grid">
+      <view 
+        wx:for="{{days}}" 
+        wx:key="date" 
+        class="day-item {{item.isCurrentMonth ? 'current-month' : 'other-month'}} {{item.isToday ? 'today' : ''}} {{item.isWeekend ? 'weekend' : ''}}"
+        data-date="{{item.date}}"
+        bindtap="onDateTap"
+      >
+        <view class="day-number">{{item.day}}</view>
+        <view wx:if="{{item.hasRecord}}" class="record-indicator success">
+          {{item.recordCount}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats card">
+    <view class="stats-title">本月统计</view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-value text-success">{{stats.successCount || 0}}</view>
+        <view class="stat-label">活跃天数</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-value text-muted">{{stats.totalCount || 0}}</view>
+        <view class="stat-label">总记录</view>
+      </view>
+    </view>
+    
+    <view class="stats-divider"></view>
+    
+    <view class="stats-title">全部时间统计</view>
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-value text-primary">{{stats.totalAllTimeCount || 0}}</view>
+        <view class="stat-label">总打卡次数</view>
+      </view>
+    </view>
+  </view>
+</view>
